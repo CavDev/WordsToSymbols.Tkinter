@@ -4,4 +4,4 @@
 
 如果想要Debug请先配置Python环境<br /><br />
 再用pip安装svttk主题包<br />
-`pip install sv-ttk`
+```pip install sv-ttk```
