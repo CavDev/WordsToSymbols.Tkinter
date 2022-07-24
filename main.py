@@ -68,7 +68,7 @@ class Event:
         sv_ttk.toggle_theme()
 
     def aboutThis(event):
-        messagebox.showinfo("说明", "这是一个写了两小时的小工具\n它可以为你将你原来输入的英文字母使用特殊符号代替\n你可以将它用作名字或是任何途径\n(PS:请手动 Ctrl + C 复制文本框中内容)\n\n\nBy NSX")
+        messagebox.showinfo("说明", "这是一个写了两小时的小工具\n它可以为你将你原来输入的英文字母使用特殊符号代替\n输入的其它字符会被忽略，所以你可以直接把你的名字复制进来\n你可以将它用作名字或是任何途径\n(PS:请手动 Ctrl + C 复制文本框中内容)\n\nBy NSX\n2022.7.25")
 
 class Win:
     def __init__(self):
@@ -81,14 +81,15 @@ class Win:
 
     def __win(self):
         root = Tk()
-        root.title("随机特殊字母 By NSX")
+        root.title("")
         # 设置大小 居中展示
-        width = 300
-        height = 260
+        width = 610
+        height = 400
         screenwidth = root.winfo_screenwidth()
         screenheight = root.winfo_screenheight()
         geometry = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
         root.geometry(geometry)
+        root.iconbitmap('ico.ico')
         root.resizable(width=False, height=False)
         return root
 
@@ -96,26 +97,26 @@ class Win:
         self.root.mainloop()
 
     def __tk_label_titleText(self):
-        label = Label(self.root,text="在下方输入字符")
-        label.configure(font=("Microsoft YaHei", 12))
-        label.place(x=20, y=50, width=160, height=24)
+        label = Label(self.root,text="生成特殊字母", foreground='gray')
+        label.configure(font=("Microsoft YaHei", 25, 'bold'))
+        label.place(x=205, y=70, width=220, height=40)
         return label
 
     def __tk_button_goButton(self):
         btn = Button(self.root, text="生成", style="Accent.TButton")
-        btn.place(x=20, y=140, width=75, height=32)
+        btn.place(x=110, y=220, width=115, height=36)
         btn.bind('<Button-1>', Event.clickButton)
         return btn
 
     def __tk_button_changeTheme(self):
         btn = Button(self.root, text="改变主题")
-        btn.place(x=105, y=140, width=75, height=32)
+        btn.place(x=250, y=220, width=115, height=36)
         btn.bind('<Button-1>', Event.changeTheme)
         return btn
 
     def __tk_button_aboutThis(self):
         btn = Button(self.root, text="说明")
-        btn.place(x=190, y=140, width=75, height=32)
+        btn.place(x=430, y=220, width=85, height=36)
         btn.bind('<Button-1>', Event.aboutThis)
         return btn
 
@@ -123,7 +124,7 @@ class Win:
         global e
         e = StringVar()
         ipt = Entry(self.root, textvariable=e)
-        ipt.place(x=20, y=90, width=226, height=31)
+        ipt.place(x=80, y=150, width=459, height=37)
         return ipt
 
 if __name__ == "__main__":
