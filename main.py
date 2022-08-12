@@ -105,7 +105,7 @@ class Event:
         sv_ttk.toggle_theme()
 
     def aboutThis(event):
-        messagebox.showinfo("说明", "又是一个牛马工具\n它可以为你将你原来输入的英文字母使用特殊符号代替\n输入的其它字符会被忽略，所以你可以直接把你的名字复制进来\n你可以将它用作名字或是任何途径\n如果想要使用更多字符来进行匹配请勾选 “完整字符集” 选项'\n(PS:请手动 Ctrl + C 复制文本框中内容)\n\nBy NSX\n2022.7.25")
+        messagebox.showinfo("说明", "又是一个牛马工具\n它可以为你将你原来输入的英语字母使用形近的特殊符号代替\n输入的其它字符会被忽略，所以你可以把你想要替换的内容直接Copy进来\n你可以将它用作名字或是任何途径\n如果想要使用更多字符来进行匹配替换请勾选 “完整字符集” 选项'\n(PS:请手动 Ctrl + C 复制文本框中内容)\n\nBy NSX7\n最后更改于 2022.8.12")
 
     def changeCharsType():
         global isCheck
@@ -143,7 +143,7 @@ class Win:
         self.root.mainloop()
 
     def __tk_label_titleText(self):
-        label = Label(self.root,text="生成特殊字母", foreground='gray')
+        label = Label(self.root,text="字词 ➪ 符号", foreground='gray')
         label.configure(font=("Microsoft YaHei", 25, 'bold'))
         label.place(x=205, y=70, width=220, height=40)
         return label
