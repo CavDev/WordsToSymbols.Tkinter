@@ -6,4 +6,4 @@
 再用pip安装svttk主题包<br />
 ```pip install sv-ttk```
 
-![image](0.png)
+![image](github.com/CavDev/WordsToSymbols/0.png)
