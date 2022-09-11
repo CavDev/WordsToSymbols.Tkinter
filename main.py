@@ -74,6 +74,7 @@ class Event:
         textList = ""
         resultTextList = ""
         overText = ""
+        spaceToInsertList = []
 
         if e.get() == "":
             # messagebox.showwarning("错误","文本框为空！")
@@ -81,31 +82,48 @@ class Event:
         else:
             for index in range(len(e.get())):
                 x = e.get()[index]
+
+                if x == " ":
+                    spaceToInsertList.append(index)
+                    
                 result = re.match("[A-Za-z]*", x) # 用正则表达式匹配26个英文字母
                 textList += str(result.group())
                
         resultTextList = textList
         
-        if isCheck == False: # 当“完整字符集”未被勾选
+        if isCheck == False: # 当“完整字符集”被勾选（注意是反的）
              for index in range(len(resultTextList)):
                  indexZ = len(eval("NameList.list" + resultTextList[index].upper()))
                  indexDown = rd.randint(0, indexZ)
                  # messagebox.showinfo("title", indexDown)   
                  overText += eval("NameList.list" + resultTextList[index].upper())[indexDown - 1]
-        elif isCheck == True:
+
+                 
+        elif isCheck == True: # 当“完整字符集”未被勾选
             for index in range(len(resultTextList)):
                  indexZ = len(eval("NameList.lessList" + resultTextList[index].upper()))
                  indexDown = rd.randint(0, indexZ)
                  overText += eval("NameList.lessList" + resultTextList[index].upper())[indexDown - 1]
-          
-        e.set(overText)
+
+                 
+        for i in spaceToInsertList:
+            temp2 = []
+
+            for index in range(len(overText)):
+                temp2.append(overText[index])
+
+            temp2.insert(i, " ")
+
+            overText = temp2
+
+        e.set("".join(overText))
 
     def changeTheme(event):
         global e
         sv_ttk.toggle_theme()
 
     def aboutThis(event):
-        messagebox.showinfo("说明", "又是一个牛马工具\n它可以为你将你原来输入的英语字母使用形近的特殊符号代替\n输入的其它字符会被忽略，所以你可以把你想要替换的内容直接Copy进来\n你可以将它用作名字或是任何途径\n如果想要使用更多字符来进行匹配替换请勾选 “完整字符集” 选项'\n(PS:请手动 Ctrl + C 复制文本框中内容)\n\nBy NSX7\n最后更改于 2022.8.12")
+        messagebox.showinfo("说明", "为你将你原来输入的英语字母使用形近的特殊符号代替\n输入的其它字符会被忽略，所以你可以把你想要替换的内容直接Copy进来\n你可以将它用作名字或是任何途径\n如果想要使用更多字符来进行匹配替换请勾选 “完整字符集” 选项'\n(PS:请手动 Ctrl + C 复制文本框中内容)\n9月3日修复: 转换前字符中的空格将被保留\n\nBy NSX7\n最后更改于 2022.8.12")
 
     def changeCharsType():
         global isCheck
